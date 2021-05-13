@@ -80,5 +80,40 @@ class Graph {
         }
     }
 
+    bfs(startingNode) {
+  
+        // table of visited nodes
+        const visited = {};
+    
+        const q = new Queue();
+    
+        // add the starting node to the queue
+        visited[startingNode] = true;
+        q.enqueue(startingNode);
+    
+        // loop until the queue is empty
+        while (!q.isEmpty()) {
 
+            // get the next element from the queue
+            const getQueueElement = q.dequeue();
+    
+            console.log(getQueueElement);
+    
+            // get the list of neighbours for the node
+            const get_List = this.AdjList.get(getQueueElement);
+    
+            // loop through the list and add the element to the
+            // queue if it has not been visited yet
+            for (var i in get_List) {
+
+                var neighbour = get_List[i];
+    
+                if (!visited[neighbour]) {
+
+                    visited[neighbour] = true;
+                    q.enqueue(neighbour);
+                }
+            }
+        }
+    }
 }
